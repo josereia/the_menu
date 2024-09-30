@@ -4,8 +4,8 @@ class ThemeLightColors extends ThemeColorsExt {
   ThemeLightColors({
     super.primary = const Color(0xFFFF4B4E),
     super.onPrimary = const Color(0xFFFFFFFF),
-    super.surface = const Color(0xFF161616),
-    super.onSurface = const Color(0xFF000000),
+    super.surface = const Color(0xFFF2F2F2),
+    super.onSurface = const Color(0xFF161616),
     super.text = const Color(0xFF161616),
     super.textAlt = const Color.fromRGBO(22, 22, 22, 0.6),
     super.shadow = const Color.fromRGBO(22, 22, 22, 0.1),
