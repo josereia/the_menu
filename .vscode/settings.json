@@ -1,8 +1,10 @@
 {
   "cSpell.words": [
     "bools",
+    "cupertino",
     "lerp",
     "pubspec",
     "RGBO"
-  ]
+  ],
+  "makefile.configureOnOpen": false
 }
