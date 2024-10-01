@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:the_menu/core/routes/app_pages.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/theme/app_theme.dart';
+import 'package:the_menu/core/widgets/navbar_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,9 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: const AppTheme(isDark: false).get(),
       darkTheme: const AppTheme(isDark: true).get(),
+      builder: (context, child) => Column(
+        children: [Expanded(child: child ?? Container()), NavbarWidget()],
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
