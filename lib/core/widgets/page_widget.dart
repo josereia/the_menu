@@ -7,6 +7,7 @@ class PageWidget extends StatelessWidget with ThemeMixin {
     required this.body,
     this.appBar,
     this.navBar,
+    this.fabBtn,
     this.padding,
     this.appBarSize,
     super.key,
@@ -15,6 +16,7 @@ class PageWidget extends StatelessWidget with ThemeMixin {
   final Widget body;
   final Widget? appBar;
   final Widget? navBar;
+  final Widget? fabBtn;
   final EdgeInsets? padding;
   final Size? appBarSize;
 
@@ -23,10 +25,9 @@ class PageWidget extends StatelessWidget with ThemeMixin {
     final metrics = getMetrics(context);
 
     return Scaffold(
-      //extendBody: true,
-      //extendBodyBehindAppBar: true,
       appBar: _getAppBar(metrics, appBarSize),
       bottomNavigationBar: navBar,
+      floatingActionButton: fabBtn,
       body: Padding(
         padding: padding ?? EdgeInsets.all(metrics.medium).copyWith(bottom: 0),
         child: Center(child: body),

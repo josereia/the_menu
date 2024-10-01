@@ -14,6 +14,8 @@ dependencies:
   google_fonts: ^6.2.1
   solar_icons: ^0.0.5
   get: ^4.6.6
+  dart_mappable: ^4.2.2
+  ionicons: ^0.2.2
 
 dev_dependencies:
   flutter_test:
@@ -23,6 +25,8 @@ dev_dependencies:
   very_good_analysis: ^6.0.0
   flutter_launcher_icons: ^0.14.1
   flutter_native_splash: ^2.4.1
+  dart_mappable_builder: ^4.2.3
+  build_runner: ^2.4.13
 
 flutter:
   uses-material-design: true

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:the_menu/core/widgets/app_bar_widget.dart';
+import 'package:get/get.dart';
+import 'package:solar_icons/solar_icons.dart';
+import 'package:the_menu/core/domain/product_entity.dart';
+import 'package:the_menu/core/routes/app_routes.dart';
+import 'package:the_menu/core/widgets/app_bars/app_bar_widget.dart';
+import 'package:the_menu/core/widgets/buttons/fab_button_widget.dart';
 import 'package:the_menu/core/widgets/cards/product_card_widget.dart';
 import 'package:the_menu/core/widgets/page_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
 import 'package:the_menu/core/widgets/tab_view/tab_view_widget.dart';
+import 'package:the_menu/modules/home/presenter/home_page_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,6 +17,10 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageWidget(
+      fabBtn: FabButtonWidget(
+        icon: SolarIconsOutline.bag,
+        onPressed: () async => Get.toNamed(AppRoutes.bag),
+      ),
       body: SafeArea(
         bottom: false,
         child: ListView(
@@ -28,7 +38,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _AllWidget extends StatelessWidget {
+class _AllWidget extends GetView<HomePageController> {
   const _AllWidget();
 
   @override
@@ -41,13 +51,21 @@ class _AllWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Queijo Minas',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
           image:
               'https://laticiniosholandes.com.br/wp-content/uploads/2021/09/4-1024x576.jpg',
           price: 55,
+        );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
         );
       },
     );

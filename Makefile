@@ -1,3 +1,9 @@
+default: runner
+
+runner:
+	@echo "Rodando o build runner"
+	@dart run build_runner build
+
 icons:
 	@echo "Gerando launcher icons"
 	@flutter pub run flutter_launcher_icons
