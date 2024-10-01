@@ -25,7 +25,7 @@ class ImageWidget extends StatelessWidget with ThemeMixin {
     }
 
     return ClipRRect(
-      borderRadius: BorderRadius.all(metrics.radius / 2),
+      borderRadius: BorderRadius.all(metrics.radius / 1.5),
       child: Image(
         width: width,
         height: height,
