@@ -9,5 +9,15 @@ abstract class AppPages {
       name: AppRoutes.menu,
       page: MenuPage.new,
     ),
+    GetPage<void>(
+      title: 'orders',
+      name: AppRoutes.orders,
+      page: MenuPage.new,
+    ),
+    GetPage<void>(
+      title: 'notifications',
+      name: AppRoutes.notifications,
+      page: MenuPage.new,
+    ),
   ];
 }
