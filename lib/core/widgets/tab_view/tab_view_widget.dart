@@ -20,7 +20,7 @@ class TabViewWidget extends StatefulWidget {
 }
 
 class _TabViewWidgetState extends State<TabViewWidget> {
-  int current = 1;
+  int current = 0;
 
   void change(int index) => setState(() => current = index);
 
