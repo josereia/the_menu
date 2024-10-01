@@ -27,7 +27,6 @@ class _TabViewWidgetState extends State<TabViewWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
       children: [
         _HeaderWidget(
           current: current,
@@ -35,7 +34,7 @@ class _TabViewWidgetState extends State<TabViewWidget> {
           onChanged: change,
         ),
         const SpacerWidget(),
-        Expanded(child: widget.children[current]),
+        widget.children[current],
       ],
     );
   }

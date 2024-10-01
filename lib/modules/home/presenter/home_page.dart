@@ -10,14 +10,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PageWidget(
-      appBarSize: Size.fromHeight(360),
-      appBar: AppBarWidget(),
+    return PageWidget(
       body: SafeArea(
         bottom: false,
-        child: TabViewWidget(
-          tabs: ['Todos', 'Bebidas'],
-          children: [_AllWidget(), _DrinksWidget()],
+        child: ListView(
+          children: const [
+            AppBarWidget(),
+            SpacerWidget(),
+            TabViewWidget(
+              tabs: ['Todos', 'Bebidas'],
+              children: [_AllWidget(), _DrinksWidget()],
+            ),
+          ],
         ),
       ),
     );
@@ -31,6 +35,8 @@ class _AllWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: 10,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (_, __) => const SpacerWidget(
         size: SpacerWidgetSize.small,
       ),
@@ -55,6 +61,8 @@ class _DrinksWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.separated(
       itemCount: 10,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (_, __) => const SpacerWidget(
         size: SpacerWidgetSize.small,
       ),
