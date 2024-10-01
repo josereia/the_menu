@@ -7,12 +7,14 @@ class PageWidget extends StatelessWidget with ThemeMixin {
     required this.body,
     this.appBar,
     this.navBar,
+    this.padding,
     super.key,
   });
 
   final Widget body;
   final Widget? appBar;
   final Widget? navBar;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class PageWidget extends StatelessWidget with ThemeMixin {
       appBar: _getAppBar(metrics),
       bottomNavigationBar: navBar,
       body: Padding(
-        padding: EdgeInsets.all(metrics.medium).copyWith(bottom: 0),
+        padding: padding ?? EdgeInsets.all(metrics.medium).copyWith(bottom: 0),
         child: Center(child: body),
       ),
     );
