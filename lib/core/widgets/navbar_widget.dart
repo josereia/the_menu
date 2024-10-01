@@ -6,6 +6,8 @@ import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/widgets/text_widget.dart';
 
 class NavbarWidget extends StatefulWidget {
+  const NavbarWidget({super.key});
+
   @override
   State<StatefulWidget> createState() => _NavbarWidgetState();
 }
