@@ -72,8 +72,7 @@ class _AllWidget extends GetView<HomePageController> {
           name: 'Queijo Minas',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
-          image:
-              'assets/queijo.jpg',
+          image: 'assets/queijo.jpg',
           price: 55,
         );
 
@@ -89,7 +88,7 @@ class _AllWidget extends GetView<HomePageController> {
   }
 }
 
-class _DrinksWidget extends StatelessWidget {
+class _DrinksWidget extends GetView<HomePageController> {
   const _DrinksWidget();
 
   @override
@@ -102,20 +101,27 @@ class _DrinksWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Cuba Libre',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
-          image:
-              'assets/cuba.jpg',
+          image: 'assets/cuba.jpg',
           price: 13,
+        );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
         );
       },
     );
   }
 }
 
-class _ArtesanaisWidget extends StatelessWidget {
+class _ArtesanaisWidget extends GetView<HomePageController> {
   const _ArtesanaisWidget();
 
   @override
@@ -128,19 +134,27 @@ class _ArtesanaisWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Doce de leite ',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
           image: 'assets/leite.jpg',
           price: 13,
         );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
+        );
       },
     );
   }
 }
 
-class _CestasWidget extends StatelessWidget {
+class _CestasWidget extends GetView<HomePageController> {
   const _CestasWidget();
 
   @override
@@ -153,19 +167,27 @@ class _CestasWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Cestas ',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
           image: 'assets/cestas.jpg',
           price: 13,
         );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
+        );
       },
     );
   }
 }
 
-class _DocesWidget extends StatelessWidget {
+class _DocesWidget extends GetView<HomePageController> {
   const _DocesWidget();
 
   @override
@@ -178,19 +200,27 @@ class _DocesWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Paçocas ',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
           image: 'assets/doces.jpeg',
           price: 13,
         );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
+        );
       },
     );
   }
 }
 
-class _GeleiasWidget extends StatelessWidget {
+class _GeleiasWidget extends GetView<HomePageController> {
   const _GeleiasWidget();
 
   @override
@@ -203,19 +233,27 @@ class _GeleiasWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Geleia de morango ',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
-          image:'assets/geleia.jpeg',
+          image: 'assets/geleia.jpeg',
           price: 13,
+        );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
         );
       },
     );
   }
 }
 
-class _LinguicaWidget extends StatelessWidget {
+class _LinguicaWidget extends GetView<HomePageController> {
   const _LinguicaWidget();
 
   @override
@@ -228,12 +266,20 @@ class _LinguicaWidget extends StatelessWidget {
         size: SpacerWidgetSize.small,
       ),
       itemBuilder: (_, __) {
-        return const ProductCardWidget(
+        const product = ProductEntity(
           name: 'Toscana ',
           description:
               'Eiusmod tempor et ipsum aliquip magna aliqua commodo ad Lorem.',
           image: 'assets/linguica.jpeg',
           price: 13,
+        );
+
+        return ProductCardWidget(
+          onPressed: () async => controller.addToBag(product),
+          name: product.name,
+          description: product.description,
+          image: product.image,
+          price: product.price,
         );
       },
     );
