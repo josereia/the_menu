@@ -1,69 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:solar_icons/solar_icons.dart';
 import 'package:the_menu/core/mixins/theme_mixin.dart';
-import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/widgets/buttons/touchable_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
 import 'package:the_menu/core/widgets/text_widget.dart';
 
-class NavbarWidget extends StatefulWidget {
-  const NavbarWidget({super.key});
+class NavbarWidget extends StatelessWidget with ThemeMixin {
+  const NavbarWidget({
+    this.current = 0,
+    this.onChanged,
+    super.key,
+  });
 
-  @override
-  State<StatefulWidget> createState() => _NavbarWidgetState();
-}
-
-class _NavbarWidgetState extends State<NavbarWidget> with ThemeMixin {
-  String current = Get.currentRoute;
-
-  Future<void> change(String route) async {
-    setState(() => current = route);
-    await Get.toNamed<void>(route);
-  }
+  final int current;
+  final void Function(int index)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     final colors = getColors(context);
     final metrics = getMetrics(context);
 
-    return SafeArea(
-      top: false,
-      left: false,
-      right: false,
-      child: Container(
-        width: double.infinity,
-        padding: EdgeInsets.symmetric(
-          vertical: metrics.small,
-          horizontal: metrics.medium,
-        ),
-        decoration: BoxDecoration(color: colors.background),
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        vertical: metrics.small,
+        horizontal: metrics.medium,
+      ),
+      decoration: BoxDecoration(color: colors.background),
+      child: SafeArea(
+        top: false,
+        left: false,
+        right: false,
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _ItemWidget(
+              index: 0,
+              current: current,
               text: 'Início',
               icon: SolarIconsOutline.home,
               activeIcon: SolarIconsBold.home,
-              route: AppRoutes.home,
-              current: current,
-              onChanged: change,
+              onChanged: (index) => onChanged?.call(index),
             ),
             _ItemWidget(
+              index: 1,
+              current: current,
               text: 'Pedidos',
               icon: SolarIconsOutline.documentText,
               activeIcon: SolarIconsBold.documentText,
-              route: AppRoutes.orders,
-              current: current,
-              onChanged: change,
+              onChanged: (index) => onChanged?.call(index),
             ),
             _ItemWidget(
+              index: 2,
+              current: current,
               text: 'Notificações',
               icon: SolarIconsOutline.bell,
               activeIcon: SolarIconsBold.bell,
-              current: current,
-              route: AppRoutes.notifications,
-              onChanged: change,
+              onChanged: (index) => onChanged?.call(index),
             ),
           ],
         ),
@@ -74,26 +68,26 @@ class _NavbarWidgetState extends State<NavbarWidget> with ThemeMixin {
 
 class _ItemWidget extends StatelessWidget with ThemeMixin {
   const _ItemWidget({
+    required this.index,
+    required this.current,
     required this.text,
     required this.icon,
     required this.activeIcon,
-    required this.route,
-    required this.current,
     required this.onChanged,
   });
 
+  final int index;
+  final int current;
   final String text;
   final IconData icon;
   final IconData activeIcon;
-  final String route;
-  final String current;
-  final void Function(String route) onChanged;
+  final void Function(int index) onChanged;
 
   @override
   Widget build(BuildContext context) {
     final colors = getColors(context);
     final metrics = getMetrics(context);
-    final isActive = current == route;
+    final isActive = index == current;
 
     var newIcon = icon;
     var color = colors.textAlt;
@@ -103,15 +97,18 @@ class _ItemWidget extends StatelessWidget with ThemeMixin {
     }
 
     return TouchableWidget(
-      onPressed: () => onChanged(route),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(newIcon, size: 24, color: color),
-          SpacerWidget(value: metrics.small / 2),
-          TextWidget(text, color: color, type: TextWidgetType.bodySmall),
-        ],
+      onPressed: () => onChanged(index),
+      child: SizedBox(
+        width: 66,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(newIcon, size: 24, color: color),
+            SpacerWidget(value: metrics.small / 2),
+            TextWidget(text, color: color, type: TextWidgetType.bodySmall),
+          ],
+        ),
       ),
     );
   }
