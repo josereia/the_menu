@@ -1,23 +1,23 @@
 import 'package:get/get.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
-import 'package:the_menu/modules/menu/presenter/menu_page.dart';
+import 'package:the_menu/modules/home/presenter/home_page.dart';
 
 abstract class AppPages {
   static final pages = [
     GetPage<void>(
-      title: 'Menu',
-      name: AppRoutes.menu,
-      page: MenuPage.new,
+      title: 'Início',
+      name: AppRoutes.home,
+      page: HomePage.new,
     ),
     GetPage<void>(
-      title: 'orders',
+      title: 'Pedidos',
       name: AppRoutes.orders,
-      page: MenuPage.new,
+      page: HomePage.new,
     ),
     GetPage<void>(
-      title: 'notifications',
+      title: 'Notificações',
       name: AppRoutes.notifications,
-      page: MenuPage.new,
+      page: HomePage.new,
     ),
   ];
 }

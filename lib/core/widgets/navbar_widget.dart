@@ -45,7 +45,7 @@ class _NavbarWidgetState extends State<NavbarWidget> with ThemeMixin {
               text: 'Início',
               icon: SolarIconsOutline.home,
               activeIcon: SolarIconsBold.home,
-              route: AppRoutes.menu,
+              route: AppRoutes.home,
               current: current,
               onChanged: change,
             ),

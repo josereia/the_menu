@@ -3,8 +3,8 @@ import 'package:the_menu/core/widgets/page_widget.dart';
 import 'package:the_menu/core/widgets/tab_view/tab_view_widget.dart';
 import 'package:the_menu/core/widgets/text_widget.dart';
 
-class MenuPage extends StatelessWidget {
-  const MenuPage({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

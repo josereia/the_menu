@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'The Menu',
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.menu,
+      initialRoute: AppRoutes.home,
       defaultTransition: Transition.fade,
       themeMode: ThemeMode.light,
       theme: const AppTheme(isDark: false).get(),
