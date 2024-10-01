@@ -4,12 +4,14 @@ import 'package:the_menu/core/mixins/theme_mixin.dart';
 class TextWidget extends StatelessWidget with ThemeMixin {
   const TextWidget(
     this.text, {
+    this.maxLines = 1,
     this.type = TextWidgetType.bodyMedium,
     this.color,
     super.key,
   });
 
   final String text;
+  final int maxLines;
   final TextWidgetType type;
   final Color? color;
 
@@ -20,6 +22,8 @@ class TextWidget extends StatelessWidget with ThemeMixin {
 
     return Text(
       text,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: style.copyWith(color: color),
     );
   }
