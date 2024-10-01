@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:solar_icons/solar_icons.dart';
 import 'package:the_menu/core/mixins/theme_mixin.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
+import 'package:the_menu/core/widgets/buttons/touchable_widget.dart';
+import 'package:the_menu/core/widgets/spacer_widget.dart';
 import 'package:the_menu/core/widgets/text_widget.dart';
 
 class NavbarWidget extends StatefulWidget {
@@ -13,38 +15,53 @@ class NavbarWidget extends StatefulWidget {
 }
 
 class _NavbarWidgetState extends State<NavbarWidget> with ThemeMixin {
-  void change(String route) => setState(() => Get.toNamed<void>(route));
+  String current = Get.currentRoute;
+
+  Future<void> change(String route) async {
+    setState(() => current = route);
+    await Get.toNamed<void>(route);
+  }
 
   @override
   Widget build(BuildContext context) {
     final colors = getColors(context);
+    final metrics = getMetrics(context);
 
     return SafeArea(
       top: false,
       left: false,
       right: false,
       child: Container(
-        decoration: BoxDecoration(color: colors.background),
-        height: 80,
         width: double.infinity,
+        padding: EdgeInsets.symmetric(
+          vertical: metrics.small,
+          horizontal: metrics.medium,
+        ),
+        decoration: BoxDecoration(color: colors.background),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _ItemWidget(
-              icon: SolarIconsOutline.bag4,
-              text: 'Sacola',
+              text: 'Início',
+              icon: SolarIconsOutline.home,
+              activeIcon: SolarIconsBold.home,
               route: AppRoutes.menu,
+              current: current,
               onChanged: change,
             ),
             _ItemWidget(
+              text: 'Pedidos',
               icon: SolarIconsOutline.documentText,
-              text: 'Pedido',
+              activeIcon: SolarIconsBold.documentText,
               route: AppRoutes.orders,
+              current: current,
               onChanged: change,
             ),
             _ItemWidget(
+              text: 'Notificações',
               icon: SolarIconsOutline.bell,
-              text: 'Notificação',
+              activeIcon: SolarIconsBold.bell,
+              current: current,
               route: AppRoutes.notifications,
               onChanged: change,
             ),
@@ -57,40 +74,43 @@ class _NavbarWidgetState extends State<NavbarWidget> with ThemeMixin {
 
 class _ItemWidget extends StatelessWidget with ThemeMixin {
   const _ItemWidget({
-    required this.icon,
     required this.text,
+    required this.icon,
+    required this.activeIcon,
     required this.route,
+    required this.current,
     required this.onChanged,
   });
 
-  final IconData icon;
   final String text;
+  final IconData icon;
+  final IconData activeIcon;
   final String route;
+  final String current;
   final void Function(String route) onChanged;
 
   @override
   Widget build(BuildContext context) {
     final colors = getColors(context);
-    final isActive = Get.currentRoute == route;
+    final metrics = getMetrics(context);
+    final isActive = current == route;
 
-    var color = colors.text;
-    if (isActive) color = colors.primary;
+    var newIcon = icon;
+    var color = colors.textAlt;
+    if (isActive) {
+      newIcon = activeIcon;
+      color = colors.primary;
+    }
 
-    return GestureDetector(
-      onTap: () => onChanged(route),
+    return TouchableWidget(
+      onPressed: () => onChanged(route),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            size: 32,
-            color: color,
-          ),
-          TextWidget(
-            text,
-            type: TextWidgetType.bodySmall,
-          ),
+          Icon(newIcon, size: 24, color: color),
+          SpacerWidget(value: metrics.small / 2),
+          TextWidget(text, color: color, type: TextWidgetType.bodySmall),
         ],
       ),
     );

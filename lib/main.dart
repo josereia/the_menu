@@ -36,13 +36,17 @@ class MyApp extends StatelessWidget {
       title: 'The Menu',
       getPages: AppPages.pages,
       initialRoute: AppRoutes.menu,
+      defaultTransition: Transition.fade,
       themeMode: ThemeMode.light,
       theme: const AppTheme(isDark: false).get(),
       darkTheme: const AppTheme(isDark: true).get(),
-      builder: (context, child) => Column(
-        children: [Expanded(child: child ?? Container()), NavbarWidget()],
-      ),
       debugShowCheckedModeBanner: false,
+      builder: (context, child) => Column(
+        children: [
+          Expanded(child: child ?? Container()),
+          const NavbarWidget(),
+        ],
+      ),
     );
   }
 }
