@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:the_menu/core/widgets/app_bar_widget.dart';
 import 'package:the_menu/core/widgets/cards/product_card_widget.dart';
 import 'package:the_menu/core/widgets/page_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
@@ -10,6 +11,8 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const PageWidget(
+      appBarSize: Size.fromHeight(360),
+      appBar: AppBarWidget(),
       body: SafeArea(
         bottom: false,
         child: TabViewWidget(
