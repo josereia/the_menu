@@ -8,6 +8,7 @@ class PageWidget extends StatelessWidget with ThemeMixin {
     this.appBar,
     this.navBar,
     this.padding,
+    this.appBarSize,
     super.key,
   });
 
@@ -15,15 +16,16 @@ class PageWidget extends StatelessWidget with ThemeMixin {
   final Widget? appBar;
   final Widget? navBar;
   final EdgeInsets? padding;
+  final Size? appBarSize;
 
   @override
   Widget build(BuildContext context) {
     final metrics = getMetrics(context);
 
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
-      appBar: _getAppBar(metrics),
+      //extendBody: true,
+      //extendBodyBehindAppBar: true,
+      appBar: _getAppBar(metrics, appBarSize),
       bottomNavigationBar: navBar,
       body: Padding(
         padding: padding ?? EdgeInsets.all(metrics.medium).copyWith(bottom: 0),
@@ -32,10 +34,10 @@ class PageWidget extends StatelessWidget with ThemeMixin {
     );
   }
 
-  PreferredSize? _getAppBar(ThemeMetricsExt metrics) {
+  PreferredSize? _getAppBar(ThemeMetricsExt metrics, Size? size) {
     if (appBar != null) {
       return PreferredSize(
-        preferredSize: metrics.appBar,
+        preferredSize: size ?? metrics.appBar,
         child: appBar!,
       );
     }
