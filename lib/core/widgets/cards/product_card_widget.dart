@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_menu/core/mixins/theme_mixin.dart';
+import 'package:the_menu/core/widgets/buttons/touchable_widget.dart';
 import 'package:the_menu/core/widgets/cards/card_widget.dart';
 import 'package:the_menu/core/widgets/image_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
@@ -11,6 +12,7 @@ class ProductCardWidget extends StatelessWidget {
     required this.name,
     required this.description,
     this.price = 0.0,
+    this.onPressed,
     super.key,
   });
 
@@ -18,23 +20,27 @@ class ProductCardWidget extends StatelessWidget {
   final String name;
   final String description;
   final double price;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return CardWidget(
-      height: 78,
-      child: Row(
-        children: [
-          ImageWidget(width: 60, height: 60, uri: image),
-          const SpacerWidget(direction: Axis.horizontal),
-          Flexible(
-            child: _InfoWidget(
-              name: name,
-              description: description,
-              price: price,
+    return TouchableWidget(
+      onPressed: onPressed,
+      child: CardWidget(
+        height: 78,
+        child: Row(
+          children: [
+            ImageWidget(width: 60, height: 60, uri: image),
+            const SpacerWidget(direction: Axis.horizontal),
+            Flexible(
+              child: _InfoWidget(
+                name: name,
+                description: description,
+                price: price,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
