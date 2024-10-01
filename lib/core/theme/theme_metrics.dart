@@ -14,7 +14,7 @@ class ThemeMetrics extends ThemeMetricsExt {
     super.radius = const Radius.circular(16),
     super.field = const Size(240, 28),
     super.appBar = const Size.fromHeight(62),
-    super.button = const Size(240, 28),
+    super.button = const Size(double.infinity, 34),
     super.curve = Curves.easeInOutCubic,
     super.duration = const Duration(milliseconds: 200),
   });

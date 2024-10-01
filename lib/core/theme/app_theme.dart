@@ -58,17 +58,17 @@ class AppTheme {
         titleSmall: GoogleFonts.inter(
           fontSize: 10,
           color: colors.text,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
         ),
         titleMedium: GoogleFonts.inter(
           fontSize: 12,
           color: colors.text,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
         ),
         titleLarge: GoogleFonts.inter(
           fontSize: 14,
           color: colors.text,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w600,
         ),
         headlineSmall: GoogleFonts.inter(
           fontSize: 16,
