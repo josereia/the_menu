@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TextFieldWidget extends StatelessWidget {
-  const TextFieldWidget({super.key});
+  
+  const TextFieldWidget({super.key, this.labelText = ''});
+
+  final String labelText;
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+
+    return TextField(
+      decoration: InputDecoration(
+        labelText: labelText,
+      ),
+    );
   }
 }

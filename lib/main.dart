@@ -34,12 +34,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'The Menu',
       getPages: AppPages.pages,
-      initialRoute: AppRoutes.root,
+      initialRoute: AppRoutes.login,
       defaultTransition: Transition.fade,
       themeMode: ThemeMode.light,
       theme: const AppTheme(isDark: false).get(),
       darkTheme: const AppTheme(isDark: true).get(),
       debugShowCheckedModeBanner: false,
+      builder: (_,child) => Material(child: child),
     );
   }
 }
