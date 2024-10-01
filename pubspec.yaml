@@ -21,6 +21,28 @@ dev_dependencies:
 
   flutter_lints: ^4.0.0
   very_good_analysis: ^6.0.0
+  flutter_launcher_icons: ^0.14.1
+  flutter_native_splash: ^2.4.1
 
 flutter:
   uses-material-design: true
+
+flutter_launcher_icons:
+  image_path: "assets/icon.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_foreground: "assets/adaptive_icon_fg.png"
+  adaptive_icon_background: "assets/adaptive_icon_bg.png"
+  min_sdk_android: 21
+  web:
+    generate: true
+    image_path: "assets/icon.png"
+    background_color: "#FFFFFF"
+    theme_color: "#FFFFFF"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  android: true
+  ios: true
+  web: true
