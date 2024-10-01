@@ -5,11 +5,13 @@ class SpacerWidget extends StatelessWidget with ThemeMixin {
   const SpacerWidget({
     this.direction = Axis.vertical,
     this.size = SpacerWidgetSize.medium,
+    this.value,
     super.key,
   });
 
   final Axis direction;
   final SpacerWidgetSize size;
+  final double? value;
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +27,18 @@ class SpacerWidget extends StatelessWidget with ThemeMixin {
         dimension = metrics.large;
     }
 
-    return SizedBox(
-      width: direction == Axis.horizontal ? dimension : null,
-      height: direction == Axis.vertical ? dimension : null,
-    );
+    late double? width;
+    late double? height;
+    switch (direction) {
+      case Axis.vertical:
+        width = null;
+        height = value ?? dimension;
+      case Axis.horizontal:
+        width = value ?? dimension;
+        height = null;
+    }
+
+    return SizedBox(width: width, height: height);
   }
 }
 
