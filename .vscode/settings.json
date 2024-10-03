@@ -9,8 +9,10 @@
     "Ionicons",
     "lerp",
     "linguica",
+    "Ponick",
     "pubspec",
-    "RGBO"
+    "RGBO",
+    "Unisociesc"
   ],
   "makefile.configureOnOpen": false
 }
