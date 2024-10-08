@@ -28,20 +28,51 @@ class ProductCardWidget extends StatelessWidget {
       onPressed: onPressed,
       child: CardWidget(
         height: 78,
-        child: Row(
-          children: [
-            ImageWidget(width: 60, height: 60, uri: image),
-            const SpacerWidget(direction: Axis.horizontal),
-            Flexible(
-              child: _InfoWidget(
-                name: name,
-                description: description,
-                price: price,
-              ),
-            ),
-          ],
+        child: _ContentWidget(
+          image: image,
+          name: name,
+          description: description,
+          price: price,
         ),
       ),
+    );
+  }
+}
+
+class _ContentWidget extends StatelessWidget with ThemeMixin {
+  const _ContentWidget({
+    required this.image,
+    required this.name,
+    required this.description,
+    required this.price,
+  });
+
+  final String image;
+  final String name;
+  final String description;
+  final double price;
+
+  @override
+  Widget build(BuildContext context) {
+    final metrics = getMetrics(context);
+
+    return Row(
+      children: [
+        ImageWidget(
+          width: 60,
+          height: 60,
+          uri: image,
+          borderRadius: BorderRadius.all(metrics.radius / 1.4),
+        ),
+        const SpacerWidget(direction: Axis.horizontal),
+        Flexible(
+          child: _InfoWidget(
+            name: name,
+            description: description,
+            price: price,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -56,6 +87,7 @@ class _InfoWidget extends StatelessWidget with ThemeMixin {
   final String name;
   final String description;
   final double price;
+
   @override
   Widget build(BuildContext context) {
     final colors = getColors(context);
