@@ -34,7 +34,7 @@ class ButtonWidget extends StatelessWidget with ThemeMixin {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color: bgColor,
-          borderRadius: BorderRadius.all(metrics.radius),
+          borderRadius: BorderRadius.all(metrics.radius / 1.2),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

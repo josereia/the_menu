@@ -12,9 +12,9 @@ class ThemeMetrics extends ThemeMetricsExt {
     super.border = 1,
     super.blur = 50,
     super.radius = const Radius.circular(16),
-    super.field = const Size(240, 28),
+    super.field = const Size(240, 42),
     super.appBar = const Size.fromHeight(62),
-    super.button = const Size(double.infinity, 34),
+    super.button = const Size(double.infinity, 42),
     super.curve = Curves.easeInOutCubic,
     super.duration = const Duration(milliseconds: 200),
   });

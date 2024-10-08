@@ -9,6 +9,7 @@ class ThemeLightColors extends ThemeColorsExt {
     super.text = const Color(0xFF161616),
     super.textAlt = const Color.fromRGBO(22, 22, 22, 0.6),
     super.shadow = const Color.fromRGBO(22, 22, 22, 0.1),
+    super.border = const Color.fromRGBO(22, 22, 22, 0.1),
     super.background = const Color(0xFFFFFFFF),
   });
 }
@@ -22,6 +23,7 @@ class ThemeDarkColors extends ThemeColorsExt {
     super.text = const Color(0xFFF2F2F2),
     super.textAlt = const Color.fromRGBO(242, 242, 242, 0.6),
     super.shadow = const Color.fromRGBO(242, 242, 242, 0.1),
+    super.border = const Color.fromRGBO(22, 22, 22, 0.1),
     super.background = const Color(0xFF242424),
   });
 }
@@ -35,6 +37,7 @@ class ThemeColorsExt extends ThemeExtension<ThemeColorsExt> {
     required this.text,
     required this.textAlt,
     required this.shadow,
+    required this.border,
     required this.background,
   });
 
@@ -45,6 +48,7 @@ class ThemeColorsExt extends ThemeExtension<ThemeColorsExt> {
   final Color text;
   final Color textAlt;
   final Color shadow;
+  final Color border;
   final Color background;
 
   @override
@@ -56,6 +60,7 @@ class ThemeColorsExt extends ThemeExtension<ThemeColorsExt> {
     Color? text,
     Color? textAlt,
     Color? shadow,
+    Color? border,
     Color? background,
   }) {
     return ThemeColorsExt(
@@ -66,6 +71,7 @@ class ThemeColorsExt extends ThemeExtension<ThemeColorsExt> {
       text: text ?? this.text,
       textAlt: textAlt ?? this.textAlt,
       shadow: shadow ?? this.shadow,
+      border: border ?? this.border,
       background: background ?? this.background,
     );
   }
@@ -83,6 +89,7 @@ class ThemeColorsExt extends ThemeExtension<ThemeColorsExt> {
       text: Color.lerp(text, other.text, t)!,
       textAlt: Color.lerp(textAlt, other.textAlt, t)!,
       shadow: Color.lerp(shadow, other.shadow, t)!,
+      border: Color.lerp(border, other.border, t)!,
       background: Color.lerp(background, other.background, t)!,
     );
   }

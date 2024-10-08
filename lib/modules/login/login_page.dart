@@ -4,6 +4,7 @@ import 'package:solar_icons/solar_icons.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/widgets/buttons/button_widget.dart';
 import 'package:the_menu/core/widgets/image_widget.dart';
+import 'package:the_menu/core/widgets/page_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
 import 'package:the_menu/core/widgets/text_field_widget.dart';
 
@@ -12,36 +13,39 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(Object context) {
-    return SafeArea(
-      child: Column(
+    return PageWidget(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const ImageWidget(width: 80, uri: 'assets/icon.png'),
           const SpacerWidget(size: SpacerWidgetSize.large),
           const SpacerWidget(size: SpacerWidgetSize.large),
-          const FractionallySizedBox(
-            widthFactor: 0.8,
-            child: TextFieldWidget(
-              labelText: 'Usuario',
-            ),
+          const TextFieldWidget(
+            labelText: 'E-mail',
+            hintText: 'Digite seu e-mail',
+            prefixIcon: SolarIconsOutline.letter,
+            keyboardType: TextInputType.emailAddress,
           ),
-          const FractionallySizedBox(
-            widthFactor: 0.8,
-            child: TextFieldWidget(
-              labelText: 'Senha',
-            ),
+          const SpacerWidget(size: SpacerWidgetSize.small),
+          TextFieldWidget(
+            isObscure: true,
+            labelText: 'Senha',
+            hintText: 'Digite sua senha',
+            prefixIcon: SolarIconsOutline.lock,
+            textInputAction: TextInputAction.go,
+            keyboardType: TextInputType.visiblePassword,
+            onEditingComplete: () async => _login(),
           ),
           const SpacerWidget(),
-          FractionallySizedBox(
-            widthFactor: 0.6,
-            child: ButtonWidget(
-              icon: SolarIconsOutline.login,
-              text: 'Login',
-              onPressed: () async => Get.toNamed<void>(AppRoutes.root),
-            ),
+          ButtonWidget(
+            text: 'Login',
+            icon: SolarIconsOutline.login,
+            onPressed: () async => _login(),
           ),
         ],
       ),
     );
   }
+
+  Future<void> _login() async => await Get.toNamed<void>(AppRoutes.root);
 }
