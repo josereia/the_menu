@@ -7,6 +7,7 @@ class ImageWidget extends StatelessWidget with ThemeMixin {
     this.fit = BoxFit.cover,
     this.width,
     this.height,
+    this.borderRadius,
     super.key,
   });
 
@@ -14,6 +15,7 @@ class ImageWidget extends StatelessWidget with ThemeMixin {
   final BoxFit fit;
   final double? width;
   final double? height;
+  final BorderRadius? borderRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class ImageWidget extends StatelessWidget with ThemeMixin {
     }
 
     return ClipRRect(
-      borderRadius: BorderRadius.all(metrics.radius / 1.5),
+      borderRadius: borderRadius ?? BorderRadius.all(metrics.radius),
       child: Image(
         width: width,
         height: height,

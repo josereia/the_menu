@@ -1,87 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:solar_icons/solar_icons.dart';
+import 'package:the_menu/core/widgets/badge_widget.dart';
+import 'package:the_menu/core/widgets/image_widget.dart';
+import 'package:the_menu/core/widgets/spacer_widget.dart';
+import 'package:the_menu/core/widgets/text_widget.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+    return const Column(
       children: [
-        Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                'assets/store.jpeg',
-                height: 200,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Positioned(
-              left: 10,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(
-                  'assets/logo.png',
-                  height: 100,
-                  width: 100,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ],
+        _BannerWidget(),
+        SpacerWidget(),
+        _InfoWidget(),
+      ],
+    );
+  }
+}
+
+class _BannerWidget extends StatelessWidget {
+  const _BannerWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Stack(
+      alignment: Alignment.bottomLeft,
+      children: [
+        ImageWidget(
+          height: 200,
+          width: double.infinity,
+          uri: 'assets/store.jpeg',
         ),
-        const SizedBox(height: 16),
+        ImageWidget(
+          width: 100,
+          height: 100,
+          uri: 'assets/logo.png',
+        ),
+      ],
+    );
+  }
+}
+
+class _InfoWidget extends StatelessWidget {
+  const _InfoWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              'Bugert',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(
-                vertical: 4,
-                horizontal: 8,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.green,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: const Text(
-                'Aberto',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
+            TextWidget('Bugert', type: TextWidgetType.headlineLarge),
+            BadgeWidget(text: 'Aberto'),
           ],
         ),
-        const SizedBox(height: 8),
-        const Row(
+        SpacerWidget(size: SpacerWidgetSize.small),
+        Row(
           children: [
-            Icon(Icons.location_on),
-            SizedBox(width: 8),
+            Icon(SolarIconsOutline.mapPoint),
+            SpacerWidget(
+              direction: Axis.horizontal,
+              size: SpacerWidgetSize.small,
+            ),
             Text('Rua, nº 0, Bairro - Cidade, SC'),
           ],
         ),
-        const SizedBox(height: 8),
-        const Row(
+        SpacerWidget(size: SpacerWidgetSize.small),
+        Row(
           children: [
-            Icon(Icons.calendar_today),
-            SizedBox(width: 8),
+            Icon(SolarIconsOutline.calendar),
+            SpacerWidget(
+              direction: Axis.horizontal,
+              size: SpacerWidgetSize.small,
+            ),
             Text('Seg - Sex'),
           ],
         ),
-        const SizedBox(height: 8),
-        const Row(
+        SpacerWidget(size: SpacerWidgetSize.small),
+        Row(
           children: [
-            Icon(Icons.access_time),
-            SizedBox(width: 8),
+            Icon(SolarIconsOutline.clockCircle),
+            SpacerWidget(
+              direction: Axis.horizontal,
+              size: SpacerWidgetSize.small,
+            ),
             Text('08h - 18h'),
           ],
         ),
