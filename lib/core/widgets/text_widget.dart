@@ -5,10 +5,10 @@ class TextWidget extends StatelessWidget with ThemeMixin {
   const TextWidget(
     this.text, {
     this.maxLines = 1,
-    this.type = TextWidgetType.bodyMedium,
-    this.color,
     this.isItalic = false,
     this.isUnderline = false,
+    this.type = TextWidgetType.bodyMedium,
+    this.color,
     super.key,
   });
 
@@ -24,14 +24,15 @@ class TextWidget extends StatelessWidget with ThemeMixin {
     final theme = getTheme(context);
     final style = _getStyle(theme);
 
+    final decor = isUnderline ? TextDecoration.underline : TextDecoration.none;
+
     return Text(
       text,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
       style: style.copyWith(
         color: color,
-        decoration:
-            isUnderline ? TextDecoration.underline : TextDecoration.none,
+        decoration: decor,
         fontStyle: isItalic ? FontStyle.italic : FontStyle.normal,
       ),
     );

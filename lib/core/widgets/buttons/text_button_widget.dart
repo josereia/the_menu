@@ -17,11 +17,7 @@ class TextButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
-      child: TextWidget(
-        text,
-        isItalic: true,
-        isUnderline: true,
-      ),
+      child: TextWidget(text, isUnderline: true),
     );
   }
 }
