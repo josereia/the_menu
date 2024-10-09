@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:solar_icons/solar_icons.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/widgets/buttons/button_widget.dart';
+import 'package:the_menu/core/widgets/buttons/text_button.dart';
 import 'package:the_menu/core/widgets/image_widget.dart';
 import 'package:the_menu/core/widgets/page_widget.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
@@ -42,6 +43,9 @@ class LoginPage extends StatelessWidget {
             icon: SolarIconsOutline.login,
             onPressed: () async => _login(),
           ),
+          TextButtonWidget(
+            onPressed:() async => _login(),
+            text: 'Não tem cadastro?',)
         ],
       ),
     );
