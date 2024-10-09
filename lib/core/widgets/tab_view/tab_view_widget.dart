@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:the_menu/core/mixins/theme_mixin.dart';
+import 'package:the_menu/core/theme/theme_metrics.dart';
 import 'package:the_menu/core/widgets/spacer_widget.dart';
 import 'package:the_menu/core/widgets/text_widget.dart';
 
@@ -19,22 +20,40 @@ class TabViewWidget extends StatefulWidget {
   State<StatefulWidget> createState() => _TabViewWidgetState();
 }
 
-class _TabViewWidgetState extends State<TabViewWidget> {
+class _TabViewWidgetState extends State<TabViewWidget> with ThemeMixin {
   int current = 0;
+  final controller = PageController();
 
-  void change(int index) => setState(() => current = index);
+  Future<void> change(int index, ThemeMetricsExt metrics) async {
+    setState(() => current = index);
+    await controller.animateToPage(
+      index,
+      curve: metrics.curve,
+      duration: metrics.duration,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
+    final metrics = getMetrics(context);
+
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         _HeaderWidget(
           current: current,
           tabs: widget.tabs,
-          onChanged: change,
+          onChanged: (index) async => change(index, metrics),
         ),
         const SpacerWidget(),
-        widget.children[current],
+        Expanded(
+          child: PageView(
+            controller: controller,
+            allowImplicitScrolling: true,
+            onPageChanged: (index) => setState(() => current = index),
+            children: widget.children,
+          ),
+        ),
       ],
     );
   }

@@ -23,32 +23,39 @@ class HomePage extends StatelessWidget {
       ),
       body: SafeArea(
         bottom: false,
-        child: ListView(
-          children: const [
-            AppBarWidget(),
-            SpacerWidget(),
-            TabViewWidget(
-              tabs: [
-                'Todos',
-                'Bebidas',
-                'Artesanais',
-                'Cestas',
-                'Doces',
-                'Geleias',
-                'Linguiças',
-              ],
-              // ignore: lines_longer_than_80_chars
-              children: [
-                _AllWidget(),
-                _DrinksWidget(),
-                _ArtesanaisWidget(),
-                _CestasWidget(),
-                _DocesWidget(),
-                _GeleiasWidget(),
-                _LinguicaWidget(),
-              ],
-            ),
-          ],
+        left: false,
+        right: false,
+        child: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) => [],
+          physics: const AlwaysScrollableScrollPhysics(),
+          body: const CustomScrollView(
+            slivers: [
+              SliverToBoxAdapter(child: AppBarWidget()),
+              SliverToBoxAdapter(child: SpacerWidget()),
+              SliverFillRemaining(
+                child: TabViewWidget(
+                  tabs: [
+                    'Todos',
+                    'Bebidas',
+                    'Artesanais',
+                    'Cestas',
+                    'Doces',
+                    'Geleias',
+                    'Linguiças',
+                  ],
+                  children: [
+                    _AllWidget(),
+                    _DrinksWidget(),
+                    _ArtesanaisWidget(),
+                    _CestasWidget(),
+                    _DocesWidget(),
+                    _GeleiasWidget(),
+                    _LinguicaWidget(),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
