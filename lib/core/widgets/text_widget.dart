@@ -7,6 +7,8 @@ class TextWidget extends StatelessWidget with ThemeMixin {
     this.maxLines = 1,
     this.type = TextWidgetType.bodyMedium,
     this.color,
+    this.isItalic = false,
+    this.isUnderline = false,
     super.key,
   });
 
@@ -14,6 +16,8 @@ class TextWidget extends StatelessWidget with ThemeMixin {
   final int maxLines;
   final TextWidgetType type;
   final Color? color;
+  final bool isItalic;
+  final bool isUnderline;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +28,12 @@ class TextWidget extends StatelessWidget with ThemeMixin {
       text,
       maxLines: maxLines,
       overflow: TextOverflow.ellipsis,
-      style: style.copyWith(color: color),
+      style: style.copyWith(
+        color: color,
+        decoration:
+            isUnderline ? TextDecoration.underline : TextDecoration.none,
+        fontStyle: isItalic ? FontStyle.italic : FontStyle.normal,
+      ),
     );
   }
 
