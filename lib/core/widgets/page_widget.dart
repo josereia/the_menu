@@ -26,7 +26,12 @@ class PageWidget extends StatelessWidget with ThemeMixin {
 
     return Scaffold(
       appBar: _getAppBar(metrics, appBarSize),
-      bottomNavigationBar: navBar,
+      bottomNavigationBar: navBar != null
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [navBar!],
+            )
+          : null,
       floatingActionButton: fabBtn,
       body: Padding(
         padding: padding ?? EdgeInsets.all(metrics.medium).copyWith(bottom: 0),
