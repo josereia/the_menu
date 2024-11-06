@@ -3,6 +3,7 @@ import 'package:the_menu/core/bindings/home_module_binding.dart';
 import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/modules/bag/presenter/bag_page.dart';
 import 'package:the_menu/modules/checkout/checkout_page.dart';
+import 'package:the_menu/modules/checkout/select_address_page.dart';
 import 'package:the_menu/modules/login/login_page.dart';
 import 'package:the_menu/modules/root/presenter/root_page.dart';
 
@@ -25,9 +26,14 @@ abstract class AppPages {
       page: LoginPage.new,
     ),
     GetPage<void>(
-      title: 'checkout',
+      title: 'Checkout',
       name: AppRoutes.checkout,
       page: CheckoutPage.new,
+    ),
+    GetPage<void>(
+      title: 'SelectAdress',
+      name: AppRoutes.selectAddress,
+      page: SelectAddress.new,
     ),
   ];
 }
