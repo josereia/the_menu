@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:solar_icons/solar_icons.dart';
+import 'package:the_menu/core/routes/app_routes.dart';
 import 'package:the_menu/core/widgets/app_bars/collapsed_app_bar_widget.dart';
 import 'package:the_menu/core/widgets/buttons/button_widget.dart';
 import 'package:the_menu/core/widgets/cards/bag_product_card_widget.dart';
@@ -31,6 +32,7 @@ class BagPage extends GetView<BagPageController> {
                 text: 'Finalizar compra',
                 icon: SolarIconsOutline.cartCheck,
                 isEnabled: controller.products.isNotEmpty,
+                onPressed: () => Get.toNamed <void> (AppRoutes.checkout),
               ),
             ),
           ],
